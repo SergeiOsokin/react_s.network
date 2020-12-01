@@ -9,16 +9,13 @@ class Profile extends React.Component {
         this.state = {
             name: 'Undefined',
             id: 'XXXXXX',
-            urlPhoto: 'https://cdn.pixabay.com/photo/2019/12/26/10/44/horse-4720178__340.jpg'
+            urlPhoto: 'https://cdn.pixabay.com/photo/2019/12/26/10/44/horse-4720178__340.jpg',
+            // тут к нам приходит функция, которая устанавливает состояние для попапа-редактора профиля
+            openEditor: props.openEditor 
         }
-        this.handleOpenEditor = this.handleOpenEditor.bind(this);
     }
-    handleOpenEditor() {
-        ReactDOM.render(
-                    <PopupEditor close="popup_is-opened" />,
-            document.querySelector('.popups')
-        );
-    }
+
+
     render() {
         return (
             <section className='block_profile'>
@@ -26,7 +23,7 @@ class Profile extends React.Component {
                 <p className='profile__name'>{this.state.name}</p>
                 <p className='profile__id'>{this.state.id}</p>
                 <button className='button profile__button_message'>Message</button>
-                <button onClick={this.handleOpenEditor} className='button profile__button_edit'>Edit</button>
+                <button onClick={this.state.openEditor} className='button profile__button_edit'>Edit</button>
             </section>
         )
     }
