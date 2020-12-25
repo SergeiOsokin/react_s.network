@@ -5,6 +5,7 @@ import AddPost from './AddPost';
 import PopupEditor from './PopupEditor';
 import PopupAddPost from './PopupAddPost';
 import React from 'react';
+import postsArr from './posts'
 
 function Main() {
 
@@ -12,13 +13,16 @@ function Main() {
   const [isEditProfilePopupOpen, setisEditProfilePopupOpen] = React.useState(false);
   const [isAddPostPopupOpen, setisAddPostPopupOpen] = React.useState(false);
 
+  const [urlAvatar, setURL] = React.useState('https://cdn.pixabay.com/photo/2020/06/16/16/00/covid-5306374__340.png');
+  const [nameUser, setName] = React.useState('Сергей MAIN');
+  const [idUser, setID] = React.useState('1212');
+
   // меняет внутреннее состояние на противоположное
   function handleEditProfileClick() {
     setisEditProfilePopupOpen(!isEditProfilePopupOpen);
   }
 
   function handleAddPostClick() {
-    console.log('In MAIN')
     setisAddPostPopupOpen(!isAddPostPopupOpen);
   }
 
@@ -28,17 +32,35 @@ function Main() {
     setisAddPostPopupOpen(false);
   }
 
+  function setDataUSer(data) {
+    setURL(data.urlAvatar)
+    setName(data.name)
+    setID(data.id)
+  }
+
   return (
     <div>
       <main className='main'>
         {/* передаем функцию, которая будет менять состоние у попапа (другого компонента)  */}
-        <Profile openEditor={handleEditProfileClick} />
+        <Profile openEditor={handleEditProfileClick} 
+        userData={{
+          userName: nameUser,
+          userID: idUser,
+          userUrlAvatar: urlAvatar
+        }}
+          setDataPopUp={setDataUSer}
+        />
         <Posts />
+        {/* <Posts arrPosts={postsArr} /> */}
         <AddPost openAddPoster={handleAddPostClick} />
       </main>
       <section className='popups'>
         {/* попапу передаем текущее состяние и функцию для изменения состояния (закрытия попапа) */}
-        <PopupEditor isOpen={isEditProfilePopupOpen} isClose={closeAllPopups} />
+        <PopupEditor
+          isOpen={isEditProfilePopupOpen}
+          isClose={closeAllPopups}
+          setNewData={setDataUSer}
+        />
         <PopupAddPost isOpen={isAddPostPopupOpen} isClose={closeAllPopups} />
       </section>
     </div>

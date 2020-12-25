@@ -7,13 +7,9 @@ class AddPost extends React.Component {
         this.state = {
             openAddPoster: props.openAddPoster
         }
-        // this.handleOpenEditor = this.handleOpenEditor.bind(this);
+
     }
-    // handleOpenEditor() {
-    //     this.setState({
-    //         show: true
-    //     })
-    // }
+
     render() {
         return (
             <div className='add-post'>
