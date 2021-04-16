@@ -1,4 +1,4 @@
-import './style/AddPost.css'
+import '../style/AddPost.css'
 import React from 'react';
 
 class AddPost extends React.Component {

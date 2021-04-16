@@ -1,5 +1,5 @@
-import './style/Popupeditor.css';
-import close from './image/close.svg';
+import '../style/Popupeditor.css';
+import close from '../image/close.svg';
 import React from 'react';
 
 class PopupEditor extends React.Component {

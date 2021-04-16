@@ -1,11 +1,11 @@
-import './style/main.css';
+import '../style/main.css';
 import Profile from './Profile';
-import Posts from './Post';
+import Posts from './Posts';
 import AddPost from './AddPost';
 import PopupEditor from './PopupEditor';
 import PopupAddPost from './PopupAddPost';
 import React from 'react';
-import postsArr from './posts'
+import ServerPost from './ServerPost';
 
 function Main() {
 
@@ -13,9 +13,9 @@ function Main() {
   const [isEditProfilePopupOpen, setisEditProfilePopupOpen] = React.useState(false);
   const [isAddPostPopupOpen, setisAddPostPopupOpen] = React.useState(false);
 
-  const [urlAvatar, setURL] = React.useState('https://cdn.pixabay.com/photo/2020/06/16/16/00/covid-5306374__340.png');
+  const [urlAvatar, setURL] = React.useState('https://cdn.pixabay.com/photo/2021/02/06/06/29/dog-5987025__340.jpg');
   const [nameUser, setName] = React.useState('Сергей MAIN');
-  const [idUser, setID] = React.useState('1212');
+  const [idUser, setID] = React.useState('1');
 
   // меняет внутреннее состояние на противоположное
   function handleEditProfileClick() {
@@ -37,7 +37,7 @@ function Main() {
     setName(data.name)
     setID(data.id)
   }
-
+  // console.log(postsArr)
   return (
     <div>
       <main className='main'>
@@ -50,8 +50,10 @@ function Main() {
         }}
           setDataPopUp={setDataUSer}
         />
-        <Posts />
-        {/* <Posts arrPosts={postsArr} /> */}
+        <div className='posts-place'>
+          <Posts />
+          <ServerPost />
+        </div>
         <AddPost openAddPoster={handleAddPostClick} />
       </main>
       <section className='popups'>

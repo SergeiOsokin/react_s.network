@@ -1,17 +1,18 @@
-import './style/popupAddPost.css';
-import close from './image/close.svg';
-import Posts from './Post';
+import '../style/popupAddPost.css';
+import close from '../image/close.svg';
+import { createPost } from '../redux/actions';
+import { connect } from 'react-redux';
 import React from 'react';
 
 class PopupAddPost extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            ownerPost: '123456',
+            ownerPost: 'Lulu',
             idOwnerPost: '654321',
+            avatarOwner: 'https://cdn.pixabay.com/photo/2021/03/14/10/13/girl-6093779__340.jpg',
             link: '',
             text: ''
-
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleUserData = this.handleUserData.bind(this)
@@ -19,19 +20,13 @@ class PopupAddPost extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        // this.state.handleSubmit({
-        //     ownerPost: this.state.ownerPost,
-        //     idOwnerPost: this.state.idOwnerPost,
-        //     imagePost: this.state.imagePost,
-        //     textPost: this.state.textPost
-        // })
-        this.props.isClose();
+        this.props.createPost(this.state);
     }
 
     handleUserData(event) {
         this.setState({
             [event.target.name]: event.target.value,
-        })
+        });
     }
 
     render() {
@@ -60,4 +55,10 @@ class PopupAddPost extends React.Component {
     }
 }
 
-export default PopupAddPost;
+//export default PopupAddPost;
+const mapDispatchToProps = {
+    createPost,
+};
+
+// соединяем хранище с компоненотом
+export default connect(null, mapDispatchToProps)(PopupAddPost);
