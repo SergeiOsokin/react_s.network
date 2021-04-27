@@ -8,6 +8,7 @@ const initialState = {
 };
 //
 export const postsReducer = (state = initialState, action) => {
+    console.log(state.posts)
     switch (action.type) {
         case CREATE_POST: // новые посты
             //action.payload - посты. Добавляем посты в массив постов, откуда берем из для отображения

@@ -1,19 +1,19 @@
 import '../style/Popupeditor.css';
 import close from '../image/close.svg';
 import React from 'react';
+import { connect } from 'react-redux';
+import { setProfileInfo } from '../redux/actions';
 
 class PopupEditor extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            urlAvatar: '',
-            nameUser: '',
-            userID: '',
-            // принимаем функцию, для установки новых значений
-            handleSubmit: props.setNewData
+            urlAvatar: this.props.profileInfo.urlAvatar,
+            nameUser: this.props.profileInfo.nameUser,
+            userID: this.props.profileInfo.userID,
         }
         this.handleUserData = this.handleUserData.bind(this)
-        this.handleSubmitQQ = this.handleSubmitQQ.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     handleUserData(event) {
@@ -22,14 +22,15 @@ class PopupEditor extends React.Component {
         })
     }
 
-    handleSubmitQQ(event) {
+    handleSubmit(event) {
         event.preventDefault()
-        this.state.handleSubmit({
-            urlAvatar: this.state.urlAvatar,
-            name: this.state.nameUser,
-            id: this.state.userID
+        const { urlAvatar, nameUser, userID } = this.state;
+        this.props.setProfileInfo({
+            urlAvatar,
+            nameUser,
+            userID
         })
-        this.props.isClose();
+        // this.props.isClose();
     }
 
     render() {
@@ -38,20 +39,20 @@ class PopupEditor extends React.Component {
                 <div className="popup-edit__content">
                     <img onClick={this.props.isClose} src={close} alt="" className="popup-edit__close" />
                     <h3 className="popup-edit__title">Редактировать профиль</h3>
-                    <form onSubmit={this.handleSubmitQQ} className="popup-edit__form" name="newEdit">
+                    <form onSubmit={this.handleSubmit} className="popup-edit__form" name="newEdit">
                         <div>
-                            <input value={this.props.urlAvatar} onChange={this.handleUserData} type="text" autoComplete="off" name="urlAvatar"
+                            <input value={this.state.urlAvatar} onChange={this.handleUserData} type="text" autoComplete="off" name="urlAvatar"
                                 pattern="^(http|https):\/\/\w*.\w*.\w*.+"
                                 className="popup-edit__input popup-avatar__input_type_name" placeholder="Ссылка на аватар" required />
                             <div className="error">{this.state.errMsg}</div>
                         </div>
                         <div>
-                            <input value={this.props.name} onChange={this.handleUserData} type="text" autoComplete="off" name="nameUser" className="popup-edit__input popup-edit__input_type_name"
+                            <input value={this.state.nameUser} onChange={this.handleUserData} type="text" autoComplete="off" name="nameUser" className="popup-edit__input popup-edit__input_type_name"
                                 placeholder="Имя" required maxLength="30" minLength="2" />
                             <div className="error">{this.state.errMsg}</div>
                         </div>
                         <div>
-                            <input value={this.props.id} onChange={this.handleUserData} type="text" autoComplete="off" name="userID"
+                            <input value={this.state.userID} onChange={this.handleUserData} type="text" autoComplete="off" name="userID"
                                 className="popup-edit__input popup-edit__input_type_about-self" placeholder="придумайте ID" required maxLength="30"
                                 minLength="2" />
                             <div className="error">{this.state.errMsg}</div>
@@ -63,5 +64,15 @@ class PopupEditor extends React.Component {
         )
     }
 }
+// теперь в props есть функция устанавливающая новую информацию в хранилище
+const mapDispatchToProps = {
+    setProfileInfo,
+};
 
-export default PopupEditor;
+const mapStateToProps = (state) => {
+    return {
+        profileInfo: state.profile.profile,
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PopupEditor);

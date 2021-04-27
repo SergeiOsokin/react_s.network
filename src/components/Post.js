@@ -2,7 +2,13 @@ import '../style/Post.css';
 import React from 'react';
 
 function Post( { post } ) {
-    console.log(post)
+
+    function isLike(event) {
+        document.querySelector('.post__like').classList.toggle('post__like_liked');
+        // это для будущего, чтобы снимать лайк и передавать на сервер нужный id
+        //event.target.closest(".post").getAttribute("owner");
+    }    
+    
     return (
         <div className='post' owner={`${post.idOwnerPost}`}>
             <div className='post__header'>
@@ -13,7 +19,10 @@ function Post( { post } ) {
 
             <img src={`${post.link}`} className='post__img' alt='' />
             <div className='post__buttons'>
-                <button className='post__like'></button>
+                <div className='like-container'>
+                    <button className='post__like' onClick={isLike}></button>
+                    <p className='post__like-sum'>{post.likes.length}</p>
+                </div>
                 <button className='post__share'>Share</button>
             </div>
             <p className='post__test'>{post.text}</p>

@@ -1,10 +1,10 @@
 import React from 'react';
 import Post from './Post';
 import { connect } from 'react-redux';
-import { fetchPosts } from '../redux/actions';
 
 function Posts({ syncPost }) {
     return syncPost.map((item, index) => {
+        //return document.querySelector('.posts-place').insertAdjacentHTML('afterbegin', <Post key={index + ' qwe'} post={item} />)
         return <Post key={index + ' qwe'} post={item} />
     });
 };
