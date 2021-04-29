@@ -1,7 +1,7 @@
 //главный файл
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './style/index.css';
+import './index.css';
 import Main from './components/Main';
 import { createStore } from 'redux';
 import { rootReducer } from './redux/rootReducer';

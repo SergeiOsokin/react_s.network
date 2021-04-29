@@ -1,15 +1,16 @@
+@import url('./style/AddPost.css');
+@import url('./style/main.css');
+@import url('./style/PopupAddPost.css');
+@import url('./style/PopupEditor.css');
+@import url('./style/Post.css');
+@import url('./style/Profile.css');
+
 body {
-  margin: 0;
+  margin: 0 auto;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin: 0;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
 

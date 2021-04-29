@@ -1,5 +1,6 @@
-import '../style/popupAddPost.css';
+import '../style/PopupAddPost.css';
 import close from '../image/close.svg';
+
 import { createPost } from '../redux/actions';
 import { connect } from 'react-redux';
 import React from 'react';

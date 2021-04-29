@@ -1,4 +1,4 @@
-import '../style/Popupeditor.css';
+import '../style/PopupEditor.css';
 import close from '../image/close.svg';
 import React from 'react';
 import { connect } from 'react-redux';
@@ -30,7 +30,7 @@ class PopupEditor extends React.Component {
             nameUser,
             userID
         })
-        // this.props.isClose();
+        this.props.isClose();
     }
 
     render() {
@@ -57,7 +57,7 @@ class PopupEditor extends React.Component {
                                 minLength="2" />
                             <div className="error">{this.state.errMsg}</div>
                         </div>
-                        <button className="button popup-edit__button">Сохранить</button>
+                        <button className="button popup__button">Сохранить</button>
                     </form>
                 </div>
             </div>

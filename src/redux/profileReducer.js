@@ -5,7 +5,7 @@ import { NEW_INFO } from './types';
 const initialState = {
     profile: {
         urlAvatar: '',
-        nameUser: '',
+        nameUser: 'Press: Edit',
         userID: ''
     },
 };

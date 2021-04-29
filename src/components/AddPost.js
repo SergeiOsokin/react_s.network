@@ -12,9 +12,9 @@ class AddPost extends React.Component {
 
     render() {
         return (
-            <div className='add-post'>
+            <section className='add-post'>
                 <button onClick={this.state.openAddPoster} className='button add-post_button'>Add post</button>
-            </div>
+            </section>
         )
     }
 }

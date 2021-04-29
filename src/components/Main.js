@@ -22,25 +22,21 @@ function Main() {
     setisAddPostPopupOpen(!isAddPostPopupOpen);
   }
 
-  // function insert () {
-  //   return document.querySelector('.posts-place').insertAdjacentHTML('afterbegin', <Posts />)
-  // }
 
   function closeAllPopups() {
     setisEditProfilePopupOpen(false);
     setisAddPostPopupOpen(false);
   }
 
-  // console.log(postsArr)
   return (
     <div>
       <main className='main'>
         {/* передаем функцию, которая будет менять состоние у попапа (другого компонента)  */}
         <Profile openEditor={handleEditProfileClick} />
-        <div className='posts-place'>
+        <section className='posts-place'>
           <Posts />
           <ServerPost />
-        </div>
+        </section>
         <AddPost openAddPoster={handleAddPostClick} />
       </main>
       <section className='popups'>

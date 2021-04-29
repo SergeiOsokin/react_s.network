@@ -1,20 +1,24 @@
 import '../style/Post.css';
 import React from 'react';
 
-function Post( { post } ) {
+function Post({ post }) {
 
     function isLike(event) {
-        document.querySelector('.post__like').classList.toggle('post__like_liked');
+        event.target.closest('.post__like').classList.toggle('post__like_liked');
         // это для будущего, чтобы снимать лайк и передавать на сервер нужный id
         //event.target.closest(".post").getAttribute("owner");
-    }    
-    
+    }
+
+    // function share() {
+    //     http://vk.com/share.php?url=document.URL&title=TitleExam&description=Tratata&image=post.link&noparse=true
+    // }
+
     return (
         <div className='post' owner={`${post.idOwnerPost}`}>
             <div className='post__header'>
                 <div className='post__img_autor' style={{ backgroundImage: `url(${post.avatarOwner})` }}></div>
                 <p className='post__img_id'>{post.ownerPost}</p>
-                <i className='post__menu'>...</i>
+                <button className='post__menu'>...</button>
             </div>
 
             <img src={`${post.link}`} className='post__img' alt='' />
@@ -23,7 +27,8 @@ function Post( { post } ) {
                     <button className='post__like' onClick={isLike}></button>
                     <p className='post__like-sum'>{post.likes.length}</p>
                 </div>
-                <button className='post__share'>Share</button>
+                {/* <button className='post__share' onClick={share}>Share</button>                 */}
+                <a href={`https://vk.com/share.php?url=${document.URL}&title=TitleExam&description=Tratata&image=${post.link}`} target="_blank">VK</a>
             </div>
             <p className='post__test'>{post.text}</p>
         </div>

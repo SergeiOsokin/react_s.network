@@ -13,7 +13,6 @@ class Profile extends React.Component {
 
     
     render() {
-        //console.log('Не должно быть')
         return (
             <section className='block_profile'>
                 <div className='profile__img_container' style={{backgroundImage: `url(${this.props.profileInfo.urlAvatar})`}} ></div>
