@@ -3,14 +3,16 @@ import close from '../image/close.svg';
 import React from 'react';
 import { connect } from 'react-redux';
 import { setProfileInfo } from '../redux/actions';
+import { setCookie } from '../helpers/setCookie';
+import { getCookie } from '../helpers/getCookie';
 
 class PopupEditor extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            urlAvatar: this.props.profileInfo.urlAvatar,
-            nameUser: this.props.profileInfo.nameUser,
-            userID: this.props.profileInfo.userID,
+            urlAvatar: '',
+            nameUser: '',
+            userID: '',
         }
         this.handleUserData = this.handleUserData.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -29,7 +31,12 @@ class PopupEditor extends React.Component {
             urlAvatar,
             nameUser,
             userID
-        })
+        });
+        setCookie({
+            urlAvatar,
+            nameUser,
+            userID
+        });
         this.props.isClose();
     }
 

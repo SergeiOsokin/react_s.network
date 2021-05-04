@@ -8,10 +8,11 @@ function Post({ post }) {
         // это для будущего, чтобы снимать лайк и передавать на сервер нужный id
         //event.target.closest(".post").getAttribute("owner");
     }
-
-    // function share() {
-    //     http://vk.com/share.php?url=document.URL&title=TitleExam&description=Tratata&image=post.link&noparse=true
-    // }
+    // иначе новый пост ломался из-за undefined
+    function countLike(arr) {
+        if(!arr) {return 0};
+        return arr.length
+    }
 
     return (
         <div className='post' owner={`${post.idOwnerPost}`}>
@@ -25,10 +26,10 @@ function Post({ post }) {
             <div className='post__buttons'>
                 <div className='like-container'>
                     <button className='post__like' onClick={isLike}></button>
-                    <p className='post__like-sum'>{post.likes.length}</p>
+                    <p className='post__like-sum'>{countLike(post.likes)}</p>
                 </div>
                 {/* <button className='post__share' onClick={share}>Share</button>                 */}
-                <a href={`https://vk.com/share.php?url=${document.URL}&title=TitleExam&description=Tratata&image=${post.link}`} target="_blank">VK</a>
+                <a href={`https://vk.com/share.php?url=${document.URL}&title=TitleExam&description=Tratata&image=${post.link}`} target="_blank">Share VK</a>
             </div>
             <p className='post__test'>{post.text}</p>
         </div>

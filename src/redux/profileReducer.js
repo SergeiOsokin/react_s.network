@@ -1,12 +1,13 @@
+import { getCookie } from '../helpers/getCookie';
 import { NEW_INFO } from './types';
 // в данном файле в зависимости от типа действия action выполняем ту или иную логику
 
 //задаем начальное состояние для постов
 const initialState = {
     profile: {
-        urlAvatar: '',
-        nameUser: 'Press: Edit',
-        userID: ''
+        urlAvatar: document.cookie ? getCookie().urlAvatar : '',
+        nameUser: document.cookie ? getCookie().userName : 'Press: Edit',
+        userID: document.cookie ? getCookie().userID : ''
     },
 };
 //
