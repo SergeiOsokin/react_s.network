@@ -1,0 +1,73 @@
+.block_profile {
+    width: 20%;
+    padding: 15px;
+    background: rgba(205, 214, 219, 0.9);
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile__img_container {
+    width: 250px;
+    height: 250px;
+    min-width: 150px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-image: url('https://cdn.pixabay.com/photo/2019/12/26/10/44/horse-4720178__340.jpg');
+}
+
+.profile__name {
+    font-size: 28px;
+    letter-spacing: 0px;
+    word-spacing: 2px;
+    color: #AEB4FF;
+    font-weight: 700;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: small-caps;
+    text-transform: capitalize;
+    margin: 0;
+}
+
+.profile__button_message:hover::after  {
+    content: ' Later =)';
+    color: black;
+}
+
+.profile__id {
+    font-size: 28px;
+    letter-spacing: 0px;
+    word-spacing: 2px;
+    color: #AEB4FF;
+    font-weight: 700;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: small-caps;
+    text-transform: capitalize;
+    margin: 15px 0;
+}
+
+.button {
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    width: 150px;
+    height: 50px;
+    font-size: 30px;
+    display: block;
+    cursor: pointer;
+}
+
+.button.profile__button_edit {
+    position: absolute;
+    left: 0;
+    width:40px;
+    height:20px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    display: block;
+}

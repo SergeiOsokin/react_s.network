@@ -1,4 +1,8 @@
-# react_s.network
-First simple APP with react
+Проект на React и Redux. 
+Реализовано
+- добавление постов
+- замена пользовательской информации
+- сохранение информации о пользователе в cookie
 
-in the development...
+
+Посмотреть: https://sergeiosokin.github.io/react_s.network/
